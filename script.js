@@ -18,8 +18,14 @@ class loginForm extends HTMLElement{
         controlsCont.classList.add('ctrl')
         let a = 
         `
-            <input type="text" placeholder="Numero di telefono, nome utente o e-mail">
-            <input type="password" placeholder="Password">
+        <div class="input-container">
+            <input onclick="" type="text" id="i1">
+            <label for="i1" id="l1">Numero di telefono, nome utente o e-mail</label>
+        </div>
+        <div class="input-container">
+            <input onclick="" type="password" id="i1">
+            <label for="i1" id="l1">Password</label>
+        </div>
             <button> Accedi</button>
             <article id="art">
                 <hr size="1">
@@ -38,6 +44,37 @@ class loginForm extends HTMLElement{
             *{
                 font-family: "Lato", sans-serif;
             }
+            .input-container {
+                position: relative;
+                width: 200px;
+              }
+              
+              #i1 {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+              }
+              
+              #l1{
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #999;
+                pointer-events: none;
+                transition: all 0.3s ease;
+              }
+              
+              #i1:focus + #l1,
+              #i1:not(:placeholder-shown) + #l1 {
+                top: 5px;
+                font-size: 12px;
+                color: #333;
+              }
+              
+              #i1:not(:focus):not(:placeholder-shown) + #l1 {
+                top: 50%;
+              }
             .container{
                 width: 100%;
                 height: 100%;
@@ -161,3 +198,7 @@ array.forEach(item => {
     a.textContent = item
     footer.appendChild(a);
 })
+
+// function changePlaceholder(this){
+     
+// }
